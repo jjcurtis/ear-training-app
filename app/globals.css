@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.base-grid {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'page'
+    'page'
+    'page'
+    'page'
+    'page'
+    'footer';
+  grid-template-rows: 
+    0.25fr 
+    1fr 
+    1fr 
+    1fr 
+    1fr
+    1fr 
+    0.25fr;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+label {
+  font-size: large;
+  font-weight: 500;
+}
+
+input {
+  border: 2px solid rgb(16, 73, 96);
+  font-weight: 600;
+  padding: 0 5px;
+}
+
+input:not([type='submit']):valid {
+  color: green;
+}
