@@ -2,19 +2,26 @@
 
 import Note from '@/classes/Note';
 import Image from 'next/image';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import getNoteImage from '@/functions/getNoteImage'
 import calculateNoteWidth from '@/functions/calculateNoteWidth';
+import { useDraggable } from '@dnd-kit/core'
 
 type Props = {
   note: Note,
-  template?: boolean,
+  id?: string
 };
 
-export default function NoteUI({ note, template = false }: Props) {
+export default function NoteUI({ note, id }: Props) {
+  const {attributes, listeners, setNodeRef, transform} = useDraggable({ id: id ?? '' });
+
+  const style: CSSProperties = {
+      transform: `translate3d(${transform?.x}px, ${(transform?.y)}px, 0)`,
+  }
+
   return (
-    <button draggable={template ? "true" : "false"} className='hover:bg-sky-200 mx-2 p-1.5 border-transparent border-2 hover:border-sky-700 rounded-md' >
-      <Image width={calculateNoteWidth(note)} src={getNoteImage(note)} alt='' />
+    <button id={id} className='mx-2 p-1.5 border-transparent border-2 rounded-3xl w-[2.375rem] h-6 relative' style={style} ref={setNodeRef} {...attributes} {...listeners}  >
+      <Image width={calculateNoteWidth(note)} src={getNoteImage(note)} alt='' className='absolute -top-[2.375rem] left-[.4375rem]' />
     </button>
   );
 }
