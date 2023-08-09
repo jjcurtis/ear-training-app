@@ -1,6 +1,6 @@
 import Note from '@/classes/Note';
 import { useDroppable } from '@dnd-kit/core';
-import NoteUI from './NoteUI';
+import NoteUI from './ui/NoteUI';
 
 type Props = {
   id: string;

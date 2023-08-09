@@ -1,6 +1,6 @@
 'use client';
 
-import { StaffLocation } from './StaffLocation';
+import { StaffLocation } from '../StaffLocation';
 import ClefUI from './ClefUI';
 import Note from '@/classes/Note';
 import { NoteData } from './NoteUI';
