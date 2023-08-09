@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Signika_Negative } from 'next/font/google';
-import Logo from '@/app/icon.png'
+import Logo from '@/app/icon.ico'
 import Footer from '@/components/Footer';
 
 const inter = Signika_Negative({ 
