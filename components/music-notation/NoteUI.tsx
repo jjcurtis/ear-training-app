@@ -2,6 +2,7 @@
 
 import Note from '@/classes/Note';
 import Image from 'next/image';
+import Duration from '@/enums/Duration';
 import React, { CSSProperties } from 'react';
 import getNoteImage from '@/functions/getNoteImage'
 import calculateNoteWidth from '@/functions/calculateNoteWidth';
@@ -12,8 +13,18 @@ type Props = {
   id?: string
 };
 
+export type NoteData = {
+  duration: Duration,
+  pitch: number
+}
+
 export default function NoteUI({ note, id }: Props) {
-  const {attributes, listeners, setNodeRef, transform} = useDraggable({ id: id ?? '' });
+  const data: NoteData = {
+    duration: note.Duration,
+    pitch: note.Pitch
+  }
+
+  const {attributes, listeners, setNodeRef, transform} = useDraggable({ id: id ?? '', data });
 
   const style: CSSProperties = {
       transform: `translate3d(${transform?.x}px, ${(transform?.y)}px, 0)`,
