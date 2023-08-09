@@ -1,6 +1,7 @@
 import React from 'react';
 import { PrismaClient } from '@prisma/client';
 import { redirect } from 'next/navigation';
+import { Heading } from '@/components/ui/Heading';
 
 async function addUser(e: FormData) {
   'use server';
@@ -30,6 +31,8 @@ async function addUser(e: FormData) {
 
 export default function SignupPage() {
   return (
+    <>
+    <Heading title='Create A Profile'/>
     <form
       className="p-8 mt-8 flex gap-3 mx-auto flex-col w-2/3 md:w-1/2 lg:w-1/3 rounded-lg border-4 border-opacity-50 border-sky-800 bg-sky-400 shadow-2xl"
       action={addUser}
@@ -70,5 +73,6 @@ export default function SignupPage() {
         value="Sign Up"
       />
     </form>
+    </>
   );
 }

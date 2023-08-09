@@ -12,7 +12,7 @@ export default function TrainingPage({}: Props) {
   return (
     <>
       <Heading title="Hone Your Listening Skills" />
-      <Grid gap={8} padding={8}>
+      <Grid>
         <Course
           title="Melody"
           description="Learn to hear and transcribe melodies"
