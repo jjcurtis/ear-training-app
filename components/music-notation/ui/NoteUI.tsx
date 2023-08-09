@@ -1,6 +1,7 @@
 'use client';
 
 import Note from '@/classes/Note';
+import INoteData from '@/interfaces/INoteData';
 import Image from 'next/image';
 import Duration from '@/enums/Duration';
 import React, { CSSProperties } from 'react';
@@ -13,13 +14,8 @@ type Props = {
   id?: string
 };
 
-export type NoteData = {
-  duration: Duration,
-  pitch: number
-}
-
 export default function NoteUI({ note, id }: Props) {
-  const data: NoteData = {
+  const data: INoteData = {
     duration: note.Duration,
     pitch: note.Pitch
   }

@@ -3,7 +3,7 @@
 import { StaffLocation } from '../StaffLocation';
 import ClefUI from './ClefUI';
 import Note from '@/classes/Note';
-import { NoteData } from './NoteUI';
+import INoteData from '@/interfaces/INoteData';
 import NoteMenu from '../NoteMenu';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import Location from '@/enums/Location';
@@ -17,7 +17,7 @@ export default function StaffUI({}: Props) {
 
   function handleDragEnd(e: DragEndEvent) {
     const location = e.over?.id as Location;
-    const data = e.active.data.current as NoteData;
+    const data = e.active.data.current as INoteData;
 
     setStaff(staff => {
       const emptyLocations = staff.filter(
