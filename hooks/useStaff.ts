@@ -4,7 +4,7 @@ import Location from '@/enums/Location';
 
 export interface ILocation {
   location: Location;
-  notes: Note[];
+  notes: (Note | null)[];
 }
 
 export default function useStaff() {

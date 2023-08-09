@@ -5,7 +5,7 @@ import NoteUI from './ui/NoteUI';
 type Props = {
   id: string;
   type: 'line' | 'space';
-  notes: Note[];
+  notes: (Note | null)[];
 };
 export function StaffLocation({ id, type, notes }: Props) {
   const { isOver, setNodeRef } = useDroppable({ id });
@@ -23,18 +23,19 @@ export function StaffLocation({ id, type, notes }: Props) {
   return (
     <div id={id} ref={setNodeRef} className={className}>
       {notes.map((note, index) => {
-
         const leftSpacing = (index + 1) * 3;
 
         return (
           <div
             key={index}
             className={`absolute -top-[1.1rem]`}
-            style={{left: `${leftSpacing + 3}rem`}}
+            style={{ left: `${leftSpacing + 3}rem` }}
           >
-            <NoteUI
-              note={new Note(note.Duration, note.Pitch)}
-            />
+            {note !== null && (
+              <NoteUI
+                note={new Note(note.Duration, note.Pitch)}
+              />
+            )}
           </div>
         );
       })}

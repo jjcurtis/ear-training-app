@@ -19,18 +19,26 @@ export default function StaffUI({}: Props) {
     const location = e.over?.id as Location;
     const data = e.active.data.current as NoteData;
 
-    setStaff(staff => [
-      ...staff.filter(
+    setStaff(staff => {
+      const emptyLocations = staff.filter(
         staffLocation => staffLocation.location !== location
-      ),
-      {
-        location,
-        notes: [
-          ...getNotes(staff, location),
-          new Note(data.duration, 88),
-        ],
-      },
-    ]);
+      );
+
+      emptyLocations.forEach(location =>
+        location.notes.push(null)
+      );
+
+      return [
+        ...emptyLocations,
+        {
+          location,
+          notes: [
+            ...getNotes(staff, location),
+            new Note(data.duration, 88),
+          ],
+        },
+      ];
+    });
 
     document
       .getElementById(`${e.active.id}`)
