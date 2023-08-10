@@ -6,7 +6,7 @@ type Props = {}
 
 export default function ClefUI({}: Props) {
   return (
-    <div className='absolute left-3 -top-10'>
+    <div className='absolute left-3 -top-10 z-10'>
       <Image src={TrebleClef} alt='' />
     </div>
   )

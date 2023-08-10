@@ -14,11 +14,11 @@ export function StaffLocation({ id, type, notes }: Props) {
     type === 'line'
       ? `${
           isOver &&
-          'bg-sky-500 outline outline-4 outline-sky-500'
+          'outline outline-4 outline-sky-300'
         } border border-black bg-black h-[2px] relative`
       : `${
           isOver &&
-          'bg-sky-500 outline outline-8 outline-sky-500'
+          'bg-sky-300 outline outline-8 outline-sky-300'
         } border border-transparent relative`;
   return (
     <div id={id} ref={setNodeRef} className={className}>

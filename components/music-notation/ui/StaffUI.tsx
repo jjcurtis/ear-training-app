@@ -51,7 +51,7 @@ export default function StaffUI({}: Props) {
   return (
     <>
       <DndContext onDragEnd={handleDragEnd}>
-        <section className="relative flex flex-col gap-2 mb-24">
+        <section className="relative flex flex-col gap-2 mb-24 overflow-x-clip">
           <ClefUI />
           <StaffLocation
             id={Location.FLine}

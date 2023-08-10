@@ -28,7 +28,7 @@ export default function NoteUI({ note, id }: Props) {
 
   return (
     <button id={id} className='mx-2 p-1.5 border-transparent border-2 rounded-3xl w-[2.375rem] h-6 relative' style={style} ref={setNodeRef} {...attributes} {...listeners}  >
-      <Image width={calculateNoteWidth(note)} src={getNoteImage(note)} alt='' className='absolute -top-[2.375rem] left-[.4375rem]' />
+      <Image width={calculateNoteWidth(note)} src={getNoteImage(note)} alt='' className='absolute -top-[2.375rem] left-[.4375rem] z-10' />
     </button>
   );
 }
