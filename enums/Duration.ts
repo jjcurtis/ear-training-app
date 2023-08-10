@@ -1,4 +1,4 @@
-const multiplier = 100;
+export const multiplier = 100;
 
 enum Duration {
   Whole = 1 * multiplier,
