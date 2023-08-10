@@ -1,11 +1,6 @@
 import { useState } from 'react';
-import Note from '@/classes/Note';
 import Location from '@/enums/Location';
-
-export interface ILocation {
-  location: Location;
-  notes: (Note | null)[];
-}
+import ILocation from '@/interfaces/ILocation';
 
 export default function useStaff() {
   const [staff, setStaff] = useState<ILocation[]>([
