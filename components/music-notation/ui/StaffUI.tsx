@@ -9,6 +9,7 @@ import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import Location from '@/enums/Location';
 import useStaff from '@/hooks/useStaff';
 import getNotes from '@/functions/getNotes';
+import verifyDropIsLocation from '@/functions/verifyDropIsLocation';
 
 type Props = {};
 
@@ -16,6 +17,8 @@ export default function StaffUI({}: Props) {
   const { staff, setStaff } = useStaff();
 
   function handleDragEnd(e: DragEndEvent) {
+    verifyDropIsLocation(e);
+     
     const location = e.over?.id as Location;
     const data = e.active.data.current as INoteData;
 
@@ -34,7 +37,7 @@ export default function StaffUI({}: Props) {
           location,
           notes: [
             ...getNotes(staff, location),
-            new Note(data.duration, 88),
+            new Note(data.duration, data.pitch),
           ],
         },
       ];
