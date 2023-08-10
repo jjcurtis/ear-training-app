@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { StaffLocation } from '../StaffLocation';
 import ClefUI from './ClefUI';
 import Note from '@/classes/Note';
@@ -10,42 +11,31 @@ import Location from '@/enums/Location';
 import useStaff from '@/hooks/useStaff';
 import getNotes from '@/functions/getNotes';
 import verifyDropIsLocation from '@/functions/verifyDropIsLocation';
+import Measure from '@/classes/Measure';
+import TimeSignature from '@/enums/TimeSignature';
+import handleMeasures from '@/functions/handleMeasures';
+import handleStaff from '@/functions/handleStaff';
+import resetActiveNote from '@/functions/resetActiveNote';
 
 type Props = {};
 
 export default function StaffUI({}: Props) {
   const { staff, setStaff } = useStaff();
+  const [measures, setMeasures] = useState<Measure[]>([new Measure(TimeSignature.FourFour)])
 
   function handleDragEnd(e: DragEndEvent) {
     verifyDropIsLocation(e);
-     
-    const location = e.over?.id as Location;
+
     const data = e.active.data.current as INoteData;
-
-    setStaff(staff => {
-      const emptyLocations = staff.filter(
-        staffLocation => staffLocation.location !== location
-      );
-
-      emptyLocations.forEach(location =>
-        location.notes.push(null)
-      );
-
-      return [
-        ...emptyLocations,
-        {
-          location,
-          notes: [
-            ...getNotes(staff, location),
-            new Note(data.duration, data.pitch),
-          ],
-        },
-      ];
-    });
-
-    document
-      .getElementById(`${e.active.id}`)
-      ?.removeAttribute('style');
+    
+    if (!measures.at(-1)?.CanInsertValue(new Note(data.duration, data.pitch))) {
+      resetActiveNote(e);
+      return;
+    }
+    
+    handleMeasures(e, measures, setMeasures);
+    handleStaff(e, setStaff);
+    resetActiveNote(e);
   }
 
   return (
