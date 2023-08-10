@@ -4,15 +4,17 @@ import Rest from './Rest';
 
 export default class Measure {
   constructor(timeSignature: TimeSignature) {
-    this.remainder = timeSignature;
+    this._remainder = timeSignature;
   }
 
-  remainder: TimeSignature;
+  private _remainder: TimeSignature;
   private _storedValues: (Note | Rest)[] = [];
 
   public get Remainder(): number {
+    if (this._storedValues.length === 0) return this._remainder;
+    
     return (
-      this.remainder -
+      this._remainder -
       this._storedValues
         .map(value => value.Duration)
         .reduce((total, sum) => total + sum)
@@ -24,8 +26,15 @@ export default class Measure {
   }
 
   public InsertValue(value: Note | Rest): void {
-    if (this.Remainder - value.Duration > 0) {
+    if (this.Remainder - value.Duration >= 0) {
       this._storedValues.push(value);
     }
+  }
+
+  public CanInsertValue(value: Note | Rest): boolean {
+    if (this.Remainder - value.Duration < 0) {
+      return false
+    }
+    return true;
   }
 }
