@@ -10,7 +10,7 @@ import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import Location from '@/enums/Location';
 import useStaff from '@/hooks/useStaff';
 import getNotes from '@/functions/getNotes';
-import verifyDropIsLocation from '@/functions/verifyDropIsLocation';
+import dropIsLocation from '@/functions/dropIsLocation';
 import Measure from '@/classes/Measure';
 import TimeSignature from '@/enums/TimeSignature';
 import handleMeasures from '@/functions/handleMeasures';
@@ -24,7 +24,10 @@ export default function StaffUI({}: Props) {
   const [measures, setMeasures] = useState<Measure[]>([new Measure(TimeSignature.FourFour)])
 
   function handleDragEnd(e: DragEndEvent) {
-    verifyDropIsLocation(e);
+    if (!dropIsLocation(e)) {
+      resetActiveNote(e);
+      return
+    };
 
     const data = e.active.data.current as INoteData;
     

@@ -1,11 +1,10 @@
 import Location from "@/enums/Location";
 import { DragEndEvent } from "@dnd-kit/core";
 
-export default function verifyDropIsLocation(e: DragEndEvent) {
+export default function dropIsLocation(e: DragEndEvent): boolean {
   if (!Object.values(Location).some(location => location === e.over?.id)){
-    document
-    .getElementById(`${e.active.id}`)
-    ?.removeAttribute('style');
-    return;
+    return false;
   } 
+
+  return true;
 }
