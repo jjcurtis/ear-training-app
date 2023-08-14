@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { StaffLocation } from '../StaffLocation';
 import ClefUI from './ClefUI';
 import Note from '@/classes/Note';
@@ -11,17 +10,16 @@ import Location from '@/enums/Location';
 import useStaff from '@/hooks/useStaff';
 import getNotes from '@/functions/getNotes';
 import dropIsLocation from '@/functions/dropIsLocation';
-import Measure from '@/classes/Measure';
-import TimeSignature from '@/enums/TimeSignature';
 import handleMeasures from '@/functions/handleMeasures';
 import handleStaff from '@/functions/handleStaff';
 import resetActiveNote from '@/functions/resetActiveNote';
+import { useMeasureContext } from '@/contexts/MeasureContext';
 
 type Props = {};
 
 export default function StaffUI({}: Props) {
   const { staff, setStaff } = useStaff();
-  const [measures, setMeasures] = useState<Measure[]>([new Measure(TimeSignature.FourFour)])
+  const { measures, setMeasures } = useMeasureContext()
 
   function handleDragEnd(e: DragEndEvent) {
     if (!dropIsLocation(e)) {
@@ -91,8 +89,8 @@ export default function StaffUI({}: Props) {
             type="line"
             notes={getNotes(staff, Location.ELine)}
           />
-          <NoteMenu />
         </section>
+          <NoteMenu />
       </DndContext>
     </>
   );
