@@ -1,5 +1,5 @@
 import Location from '@/enums/Location';
-import { ILocation } from '@/hooks/useStaff';
+import ILocation from '@/interfaces/ILocation';
 
 export default function getNotes(
   staff: ILocation[],
