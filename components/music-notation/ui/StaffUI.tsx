@@ -8,7 +8,6 @@ import NoteMenu from '../NoteMenu';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import Location from '@/enums/Location';
 import useStaff from '@/hooks/useStaff';
-import getNotes from '@/functions/getNotes';
 import dropIsLocation from '@/functions/dropIsLocation';
 import handleMeasures from '@/functions/handleMeasures';
 import handleStaff from '@/functions/handleStaff';
@@ -47,47 +46,47 @@ export default function StaffUI({}: Props) {
           <StaffLocation
             id={Location.FLine}
             type="line"
-            notes={getNotes(staff, Location.FLine)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.ESpace}
             type="space"
-            notes={getNotes(staff, Location.ESpace)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.DLine}
             type="line"
-            notes={getNotes(staff, Location.DLine)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.CSpace}
             type="space"
-            notes={getNotes(staff, Location.CSpace)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.BLine}
             type="line"
-            notes={getNotes(staff, Location.BLine)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.ASpace}
             type="space"
-            notes={getNotes(staff, Location.ASpace)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.GLine}
             type="line"
-            notes={getNotes(staff, Location.GLine)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.FSpace}
             type="space"
-            notes={getNotes(staff, Location.FSpace)}
+            staff={staff}
           />
           <StaffLocation
             id={Location.ELine}
             type="line"
-            notes={getNotes(staff, Location.ELine)}
+            staff={staff}
           />
         </section>
           <NoteMenu />
