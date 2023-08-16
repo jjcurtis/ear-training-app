@@ -14,7 +14,7 @@ export default function handleMeasures(
 
   measures
     .at(-1)
-    ?.InsertValue(new Note(data.duration, data.pitch));
+    ?.InsertValue(new Note(data.duration));
 
     measures.at(-1)?.Remainder === 0 && setMeasures(measures => [...measures, new Measure(TimeSignature.FourFour)]);
 }

@@ -1,43 +1,43 @@
 import { useState } from 'react';
-import Location from '@/enums/Location';
-import ILocation from '@/interfaces/ILocation';
+import Pitch from '@/enums/Pitch';
+import IPitch from '@/interfaces/IPitch';
 
 export default function useStaff() {
-  const [staff, setStaff] = useState<ILocation[]>([
+  const [staff, setStaff] = useState<IPitch[]>([
     {
-      location: Location.FLine,
+      pitch: Pitch.F5,
       notes: [],
     },
     {
-      location: Location.ESpace,
+      pitch: Pitch.E5,
       notes: [],
     },
     {
-      location: Location.DLine,
+      pitch: Pitch.D5,
       notes: [],
     },
     {
-      location: Location.CSpace,
+      pitch: Pitch.C5,
       notes: [],
     },
     {
-      location: Location.BLine,
+      pitch: Pitch.B4,
       notes: [],
     },
     {
-      location: Location.ASpace,
+      pitch: Pitch.A4,
       notes: [],
     },
     {
-      location: Location.GLine,
+      pitch: Pitch.G4,
       notes: [],
     },
     {
-      location: Location.FSpace,
+      pitch: Pitch.F4,
       notes: [],
     },
     {
-      location: Location.ELine,
+      pitch: Pitch.E4,
       notes: [],
     },
   ]);

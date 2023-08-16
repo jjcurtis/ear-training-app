@@ -1,8 +1,8 @@
 import Note from '@/classes/Note';
 import { useDroppable } from '@dnd-kit/core';
 import NoteUI from './ui/NoteUI';
-import ILocation from '@/interfaces/ILocation';
-import Location from '@/enums/Location';
+import IPitch from '@/interfaces/IPitch';
+import Pitch from '@/enums/Pitch';
 import getNotes from '@/functions/getNotes';
 import { useMeasureContext } from '@/contexts/MeasureContext';
 import React from 'react';
@@ -10,7 +10,7 @@ import React from 'react';
 type Props = {
   id: string;
   type: 'line' | 'space';
-  staff: ILocation[];
+  staff: IPitch[];
 };
 export function StaffLocation({ id, type, staff }: Props) {
   const { isOver, setNodeRef } = useDroppable({ id });
@@ -30,7 +30,7 @@ export function StaffLocation({ id, type, staff }: Props) {
             : undefined
         } border border-transparent relative`;
 
-  const notes = getNotes(staff, id as Location);
+  const notes = getNotes(staff, id as Pitch);
 
   const allMeasures = measures.flatMap(
     measure => measure.StoredValues
@@ -50,11 +50,13 @@ export function StaffLocation({ id, type, staff }: Props) {
                 key={index}
                 className={`absolute w-0 -top-[1.1rem]`}
                 style={{
-                  left: `calc(${index * 50}px + ${notePadding / 25 + 5}rem)`,
+                  left: `calc(${index * 50}px + ${
+                    notePadding / 25 + 5
+                  }rem)`,
                 }}
               >
                 <NoteUI
-                  note={new Note(note.Duration, note.Pitch)}
+                  note={new Note(note.Duration, id as Pitch)}
                 />
               </div>
             )}

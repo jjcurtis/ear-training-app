@@ -7,23 +7,23 @@ export default function NoteMenu() {
   return (
     <section className="flex border border-x-4 border-transparent w-fit mt-24 transition-colors hover:border-sky-400 rounded-xl border-t-0 border-b-0">
       <NoteUI
-        note={new Note(Duration.Whole, 87)}
+        note={new Note(Duration.Whole)}
         id="whole"
       />
       <NoteUI
-        note={new Note(Duration.DottedHalf, 88)}
+        note={new Note(Duration.DottedHalf)}
         id="dotted-half"
       />
       <NoteUI
-        note={new Note(Duration.Half, 87)}
+        note={new Note(Duration.Half)}
         id="half"
       />
       <NoteUI
-        note={new Note(Duration.DottedQuarter, 88)}
+        note={new Note(Duration.DottedQuarter)}
         id="dotted-quarter"
       />
       <NoteUI
-        note={new Note(Duration.Quarter, 88)}
+        note={new Note(Duration.Quarter)}
         id="quarter"
       />
     </section>

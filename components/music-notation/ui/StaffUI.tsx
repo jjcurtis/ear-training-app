@@ -6,13 +6,14 @@ import Note from '@/classes/Note';
 import INoteData from '@/interfaces/INoteData';
 import NoteMenu from '../NoteMenu';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
-import Location from '@/enums/Location';
+import Pitch from '@/enums/Pitch';
 import useStaff from '@/hooks/useStaff';
 import dropIsLocation from '@/functions/dropIsLocation';
 import handleMeasures from '@/functions/handleMeasures';
 import handleStaff from '@/functions/handleStaff';
 import resetActiveNote from '@/functions/resetActiveNote';
 import { useMeasureContext } from '@/contexts/MeasureContext';
+import playNote from '@/functions/playNote';
 
 type Props = {};
 
@@ -28,13 +29,14 @@ export default function StaffUI({}: Props) {
 
     const data = e.active.data.current as INoteData;
     
-    if (!measures.at(-1)?.CanInsertValue(new Note(data.duration, data.pitch))) {
+    if (!measures.at(-1)?.CanInsertValue(new Note(data.duration))) {
       resetActiveNote(e);
       return;
     }
     
     handleMeasures(e, measures, setMeasures);
     handleStaff(e, setStaff);
+    playNote(e)
     resetActiveNote(e);
   }
 
@@ -44,47 +46,47 @@ export default function StaffUI({}: Props) {
         <section className="relative flex flex-col gap-2 mb-24 overflow-x-clip">
           <ClefUI />
           <StaffLocation
-            id={Location.FLine}
+            id={Pitch.F5}
             type="line"
             staff={staff}
           />
           <StaffLocation
-            id={Location.ESpace}
+            id={Pitch.E5}
             type="space"
             staff={staff}
           />
           <StaffLocation
-            id={Location.DLine}
+            id={Pitch.D5}
             type="line"
             staff={staff}
           />
           <StaffLocation
-            id={Location.CSpace}
+            id={Pitch.C5}
             type="space"
             staff={staff}
           />
           <StaffLocation
-            id={Location.BLine}
+            id={Pitch.B4}
             type="line"
             staff={staff}
           />
           <StaffLocation
-            id={Location.ASpace}
+            id={Pitch.A4}
             type="space"
             staff={staff}
           />
           <StaffLocation
-            id={Location.GLine}
+            id={Pitch.G4}
             type="line"
             staff={staff}
           />
           <StaffLocation
-            id={Location.FSpace}
+            id={Pitch.F4}
             type="space"
             staff={staff}
           />
           <StaffLocation
-            id={Location.ELine}
+            id={Pitch.E4}
             type="line"
             staff={staff}
           />

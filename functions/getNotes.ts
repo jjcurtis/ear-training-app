@@ -1,13 +1,14 @@
 import Location from '@/enums/Location';
-import ILocation from '@/interfaces/ILocation';
+import Pitch from '@/enums/Pitch';
+import IPitch from '@/interfaces/IPitch';
 
 export default function getNotes(
-  staff: ILocation[],
-  location: Location
+  staff: IPitch[],
+  pitch: Pitch
 ) {
   return staff
     .filter(
-      staffLocation => staffLocation.location === location
+      staffLocation => staffLocation.pitch === pitch
     )
-    .flatMap(location => location.notes);
+    .flatMap(pitch => pitch.notes);
 }

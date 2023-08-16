@@ -1,4 +1,5 @@
-import { ILocation } from "@/hooks/useStaff";
+import IPitch from "@/interfaces/IPitch";
+import Pitch from "@/enums/Pitch";
 import getNotes from "./getNotes";
 import Note from "@/classes/Note";
 import { SetStateAction } from "react";
@@ -6,13 +7,13 @@ import { DragEndEvent } from "@dnd-kit/core";
 import Location from "@/enums/Location";
 import INoteData from "@/interfaces/INoteData";
 
-export default function handleStaff(e: DragEndEvent, setStaff: React.Dispatch<SetStateAction<ILocation[]>>) {
-  const location = e.over?.id as Location;
+export default function handleStaff(e: DragEndEvent, setStaff: React.Dispatch<SetStateAction<IPitch[]>>) {
+  const pitch = e.over?.id as Pitch;
     const data = e.active.data.current as INoteData;
 
   setStaff(staff => {
     const emptyLocations = staff.filter(
-      staffLocation => staffLocation.location !== location
+      staffLocation => staffLocation.pitch !== pitch
     );  
 
     emptyLocations.forEach(location =>
@@ -22,10 +23,10 @@ export default function handleStaff(e: DragEndEvent, setStaff: React.Dispatch<Se
     return [
       ...emptyLocations,
       {
-        location,
+        pitch,
         notes: [
-          ...getNotes(staff, location),
-          new Note(data.duration, data.pitch),
+          ...getNotes(staff, pitch),
+          new Note(data.duration, pitch),
         ],
       },
     ];
