@@ -32,7 +32,7 @@ export default function MobileMenu({
   }, [setShowMobileMenu]);
 
   return (
-    <dialog open className="w-full opacity-95 z-10">
+    <dialog open className="w-full opacity-95 z-20">
       <ul className="flex flex-col bg-sky-800 text-2xl text-sky-100 overflow-hidden">
         <li className="w-full flex justify-center border border-sky-100 border-opacity-60">
           <button
