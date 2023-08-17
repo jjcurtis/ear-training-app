@@ -7,7 +7,7 @@ import DottedQuarter from '@/public/music-images/dotted-quarter-note.svg'
 import Quarter from '@/public/music-images/quarter-note.svg';
 import { StaticImageData } from 'next/image';
 
-export default function determineImageSource(
+export default function getNoteImage(
   note: Note
 ): StaticImageData | string {
   switch (note.Duration) {

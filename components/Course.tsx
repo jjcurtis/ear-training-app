@@ -1,5 +1,4 @@
 import ICourse from '@/interfaces/ICourse'
-import React from 'react'
 import Card from './ui/Card'
 import Image from 'next/image'
 import Link from 'next/link'

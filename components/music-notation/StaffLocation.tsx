@@ -47,7 +47,6 @@ export function StaffLocation({ id, type, staff }: Props) {
           <React.Fragment key={index}>
             {!!note && (
               <div
-                key={index}
                 className={`absolute w-0 -top-[1.1rem]`}
                 style={{
                   left: `calc(${index * 50}px + ${

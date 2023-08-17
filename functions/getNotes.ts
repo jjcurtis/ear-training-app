@@ -1,4 +1,3 @@
-import Location from '@/enums/Location';
 import Pitch from '@/enums/Pitch';
 import IPitch from '@/interfaces/IPitch';
 

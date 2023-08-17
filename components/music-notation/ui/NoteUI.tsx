@@ -17,7 +17,6 @@ type Props = {
 export default function NoteUI({ note, id }: Props) {
   const data: INoteData = {
     duration: note.Duration,
-    pitch: note.Pitch
   }
 
   const {attributes, listeners, setNodeRef, transform} = useDraggable({ id: id ?? '', data });
