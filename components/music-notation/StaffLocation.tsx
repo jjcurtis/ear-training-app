@@ -28,7 +28,7 @@ export function StaffLocation({ id, type, staff }: Props) {
           isOver
             ? 'bg-sky-300 outline outline-8 outline-sky-300'
             : undefined
-        } border border-transparent relative`;
+        } border border-transparent h-[2px] relative`;
 
   const notes = getNotes(staff, id as Pitch);
 
